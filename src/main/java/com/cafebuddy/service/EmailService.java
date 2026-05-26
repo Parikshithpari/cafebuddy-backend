@@ -51,7 +51,7 @@ public class EmailService {
                 "Welcome to Brewmates! We're excited to have you on board.\n\n" +
                 "Brewmates helps you find the perfect café for getting work done — " +
                 "see who's there in real time, check WiFi quality, and vibe.\n\n" +
-                "Start exploring cafés at: https://gconnectt.com/cafebuddy/cafes\n\n" +
+                "Start exploring cafés at: https://cafebuddy.gconnectt.com/cafes\n\n" +
                 "Happy brewing,\n" +
                 "The Brewmates Team"
             );
