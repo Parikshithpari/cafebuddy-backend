@@ -76,7 +76,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration c = new CorsConfiguration();
-        c.setAllowedOriginPatterns(List.of("https://cafebuddy.gconnectt.com", "https://cafebuddy-api.gconnectt.com"));
+        c.setAllowedOriginPatterns(List.of("https://thecafebuddy.com", "https://www.thecafebuddy.com"));
         c.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         c.setAllowedHeaders(List.of("*"));
         c.setAllowCredentials(true);

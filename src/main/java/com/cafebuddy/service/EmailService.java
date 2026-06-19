@@ -45,15 +45,15 @@ public class EmailService {
             SimpleMailMessage msg = new SimpleMailMessage();
             msg.setFrom(fromEmail);
             msg.setTo(toEmail);
-            msg.setSubject("Welcome to Brewmates ☕");
+            msg.setSubject("Welcome to The Cafe Buddy ☕");
             msg.setText(
                 "Hi " + fullName + ",\n\n" +
-                "Welcome to Brewmates! We're excited to have you on board.\n\n" +
-                "Brewmates helps you find the perfect café for getting work done — " +
+                "Welcome to The Cafe Buddy! We're excited to have you on board.\n\n" +
+                "The Cafe Buddy helps you find the perfect café for getting work done — " +
                 "see who's there in real time, check WiFi quality, and vibe.\n\n" +
-                "Start exploring cafés at: https://cafebuddy.gconnectt.com/cafes\n\n" +
+                "Start exploring cafés at: https://thecafebuddy.com/cafes\n\n" +
                 "Happy brewing,\n" +
-                "The Brewmates Team"
+                "The Cafe Buddy Team"
             );
             mailSender.send(msg);
             logger.info("Welcome email sent to {}", toEmail);
@@ -76,7 +76,7 @@ public class EmailService {
                 msg.setTo(user.getEmail());
                 msg.setSubject(subject);
                 msg.setText("Hi " + user.getFullName() + ",\n\n" + body +
-                             "\n\n— The Brewmates Team\n\nTo unsubscribe, reply to this email.");
+                             "\n\n— The Cafe Buddy Team\n\nTo unsubscribe, reply to this email.");
                 mailSender.send(msg);
                 sent++;
                 logger.info("Promo email sent to {}", user.getEmail());
@@ -92,8 +92,9 @@ public class EmailService {
 
         String subject = "☕ Your Cafe Booking is Confirmed!";
 
+        // Explicitly set to IST (Asia/Kolkata)
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm a")
-                .withZone(ZoneId.systemDefault());
+                .withZone(ZoneId.of("Asia/Kolkata"));
 
         String startTime = formatter.format(booking.getStartTime());
         String endTime = formatter.format(booking.getEndTime());
@@ -206,12 +207,12 @@ public class EmailService {
                             <div class="card">
 
                                 <div class="detail">
-    <span class="label">Booking ID:</span> #%d
-</div>
+                                    <span class="label">Booking ID:</span> #%d
+                                </div>
 
-<div class="detail">
-    <span class="label">Cafe:</span> %s
-</div>
+                                <div class="detail">
+                                    <span class="label">Cafe:</span> %s
+                                </div>
 
                                 <div class="detail">
                                     <span class="label">People:</span> %d
@@ -240,7 +241,7 @@ public class EmailService {
 
                         <div class="footer">
                             © 2026 Cafe Booking System <br/>
-                            Made with ☕ and Spring Boot
+                            Made with ☕ and Made In INDIA 🇮🇳
                         </div>
 
                     </div>
@@ -248,14 +249,14 @@ public class EmailService {
                 </body>
                 </html>
                 """.formatted(
-        user.getFullName(),
-        booking.getId(),
-        cafe.getName(),
-        booking.getPeople(),
-        startTime,
-        endTime,
-        cafe.getName()
-);
+                user.getFullName(),
+                booking.getId(),
+                cafe.getName(),
+                booking.getPeople(),
+                startTime,
+                endTime,
+                cafe.getName()
+        );
 
         MimeMessage message = mailSender.createMimeMessage();
 
